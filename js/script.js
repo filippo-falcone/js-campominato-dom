@@ -10,17 +10,22 @@
 */
 /* VARIABLES */
 const playButton = document.querySelector('#play-btn');
-const mainContainer = document.querySelector('.ms-container');
 const mainGrid = document.querySelector('#ms-grid');
+const gameScreen = document.querySelector('#ms-result');
+const resetButton = document.querySelector('#reset-btn');
+const h1Screen = document.querySelector('#h1-screen');
 /* EVENTS */
 playButton.addEventListener('click', function () {
     const footer = document.querySelector('footer');
-    const difficulty = changeDifficulty('easy', 'medium', 'hard', 100, 81, 49);
+    const difficulty = changeDifficulty('easy', 'medium', 'hard', 100, 81, 3);
+    const bombs = 1;
+    const bombsArray = [];
+    const maxScore = parseInt(difficulty) - bombs;
+    let scoreCounter = 0;
     footer.classList.remove('d-none');
     footer.classList.add('d-flex');
     mainGrid.innerHTML = '';
-    const bombsArray = [];
-    for (let i = 0; i < 16; i++) {
+    for (let i = 0; i < bombs; i++) {
         const randomNumber = getRandomUniqueNumber(1, difficulty, bombsArray);
         bombsArray.push(randomNumber);
     }
@@ -29,14 +34,25 @@ playButton.addEventListener('click', function () {
         const square = createSquare(i);
         mainGrid.append(square);
         square.addEventListener('click', function () {
+            this.classList.add('bg-primary');
+            scoreCounter++;
             if (bombsArray.includes(i)) {
                 this.classList.add('bg-danger');
-            }
-            else {
-                this.classList.add('bg-primary');
+                gameScreen.classList.remove('d-none');
+                gameScreen.classList.add('d-flex');
+                gameScreen.classList.add('ms-lose');
+                h1Screen.innerHTML = 'Game Over';
+            } else if (scoreCounter === maxScore) {
+                gameScreen.classList.remove('d-none');
+                gameScreen.classList.add('d-flex');
+                gameScreen.classList.add('ms-win');
+                h1Screen.innerHTML = 'You Win';
             }
         });
     }
+});
+resetButton.addEventListener("click", function () {
+    location.reload();
 });
 /* FUNCTIONS */
 // Funzione che genera un quadrato
@@ -51,7 +67,6 @@ function createSquare(number) {
     square.classList.add('d-flex');
     square.classList.add('justify-content-center');
     square.classList.add('align-items-center');
-    square.innerHTML = `<span>${number}</span>`;
     return square;
 }
 // Funzione per cambiare livello di difficoltà

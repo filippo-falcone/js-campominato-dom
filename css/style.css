@@ -41,6 +41,21 @@ footer {
     height: calc(100% / 7);
 }
 
+#ms-result {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0.5px;
+}
+
+.ms-win {
+    background-color: rgba(0, 153, 255, 0.342);
+}
+
+.ms-lose {
+    background-color: rgba(255, 0, 0, 0.342);
+}
+
 @media screen and (min-width: 576px) {
     .ms-select {
         width: 10rem;

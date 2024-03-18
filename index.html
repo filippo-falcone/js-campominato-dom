@@ -34,8 +34,17 @@
         </nav>
     </header>
     <main class="bg-success overflow-auto">
-        <div class="ms-container container py-5">
-            <div class="row align-items-start justify-content-center" id="ms-grid">
+        <div class="ms-container container py-5 position-relative">
+            <div class="d-flex justify-content-between">
+                <h3 class="text-uppercase">score</h3>
+                <h3>00000</h3>
+            </div>
+            <div class="d-none flex-column align-items-center justify-content-center gap-4 text-white" id="ms-result">
+                <h1 id="h1-screen">
+                </h1>
+                <button class="btn btn-warning text-light" id="reset-btn" typer reset>Play Again</button>
+            </div>
+            <div class="row align-items-start justify-content-center text-center" id="ms-grid">
                 <!-- <div class="ms-square ms-square-easy d-flex justify-content-center align-items-center">
                     <span>1</span>
                 </div> -->
