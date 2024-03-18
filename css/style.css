@@ -1,0 +1,67 @@
+header {
+    height: 4.75rem;
+}
+
+main {
+    height: calc(100dvh - 4.75rem - 3.5rem);
+}
+
+footer {
+    height: 3.5rem;
+}
+
+.ms-select {
+    width: 0.25rem;
+    padding-right: 1.75rem;
+}
+
+#ms-grid,
+.ms-container {
+    width: 20rem;
+    height: 20rem;
+}
+
+.ms-square {
+    border: 1px solid black;
+    cursor: pointer;
+}
+
+.ms-square-easy {
+    width: calc(100% / 10);
+    height: calc(100% / 10);
+}
+
+.ms-square-medium {
+    width: calc(100% / 9);
+    height: calc(100% / 9);
+}
+
+.ms-square-hard {
+    width: calc(100% / 7);
+    height: calc(100% / 7);
+}
+
+@media screen and (min-width: 576px) {
+    .ms-select {
+        width: 10rem;
+        padding-right: 2.25rem;
+    }
+
+    #ms-grid,
+    .ms-container {
+        width: 25rem;
+        height: 25rem;
+    }
+}
+
+@media screen and (min-width: 768px) {
+    .ms-select {
+        width: 20rem;
+    }
+
+    #ms-grid,
+    .ms-container {
+        width: 37.5rem;
+        height: 37.5rem;
+    }
+}
