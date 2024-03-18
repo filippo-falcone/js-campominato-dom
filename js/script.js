@@ -21,6 +21,16 @@ playButton.addEventListener('click', function () {
     footer.classList.add('d-flex');
     mainContainer.classList.remove('d-none');
     mainGrid.innerHTML = '';
+    const bombsArray = [];
+    while (bombsArray.length < 16) {
+        const rndNumber = getRndInteger(1, 16);
+        let isBomb = false;
+        if (!bombsArray.includes(rndNumber)) {
+            isBomb = true;
+            bombsArray.push(rndNumber);
+        }
+    }
+    console.log(bombsArray);
     for (let i = 1; i <= difficulty; i++) {
         const square = createSquare(i);
         mainGrid.append(square);
@@ -69,20 +79,3 @@ function changeDifficulty(value1, value2, value3, numberOrString1, numberOrStrin
 function getRndInteger(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
 }
-// Funzione che valida i numeri random e le in serisce nell'array, partendo dal presupposto che il numero non è valido
-// min: elemento di tipo numerico che identifica l'estremo inferiore della mio range
-// max: elemento di tipo numerico che identifica l'estremo superiore della mio range
-// array: array di numeri in cui andranno i numeri validati
-// return: un elemento numero validato tra un range
-function uniqueRandomNumber(min, max, array) {
-    let numberValid = false;
-    let rndNumber;
-    while (!numberValid) {
-        rndNumber = getRndInteger(min, max);
-        if (!array.includes(rndNumber)) {
-            numberValid = true;
-        }
-    }
-    return rndNumber;
-}
-console.log(uniqueRandomNumber(1, 100, [3, 4]));
