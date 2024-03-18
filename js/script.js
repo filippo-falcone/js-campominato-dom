@@ -21,7 +21,7 @@ playButton.addEventListener('click', function () {
     mainGrid.innerHTML = '';
     const bombsArray = [];
     for (let i = 0; i < 16; i++) {
-        const randomNumber = getRandomUniqueNumber(1, 16, bombsArray);
+        const randomNumber = getRandomUniqueNumber(1, difficulty, bombsArray);
         bombsArray.push(randomNumber);
     }
     console.log(bombsArray);
@@ -29,10 +29,12 @@ playButton.addEventListener('click', function () {
         const square = createSquare(i);
         mainGrid.append(square);
         square.addEventListener('click', function () {
-            this.classList.add('bg-primary');
-            setTimeout(function () {
-                alert(`Hai selezionato il quadrato: ${i}`);
-            }, 0);
+            if (bombsArray.includes(i)) {
+                this.classList.add('bg-danger');
+            }
+            else {
+                this.classList.add('bg-primary');
+            }
         });
     }
 });
