@@ -1,9 +1,12 @@
 /*
 // Metto in allerta il bottone
+// Creo una funzione che genera 16 numeri random non ripetuti che rappresentano le bombe
 // Per 100 volte genero un quadrato
 // Lo aggiungo nel DOM
-// - Al click di ogni quadrato cambia il colore
-// - Stampa in console il numero della cella
+// - Al click di ogni quadrato
+// - Se la cella cliccata è una bomba la cella si colora di rosso
+// - Altrimenti di blu
+// - Creo un output in cui viene evidenziato il numero di celle non bombe selezionate
 */
 /* VARIABLES */
 const playButton = document.querySelector('#play-btn');
