@@ -14,6 +14,7 @@ const mainGrid = document.querySelector('#ms-grid');
 const gameScreen = document.querySelector('#ms-result');
 const resetButton = document.querySelector('#reset-btn');
 const h1Screen = document.querySelector('#h1-screen');
+const score = document.querySelector('#score');
 /* EVENTS */
 playButton.addEventListener('click', function () {
     const footer = document.querySelector('footer');
@@ -34,8 +35,6 @@ playButton.addEventListener('click', function () {
         const square = createSquare(i);
         mainGrid.append(square);
         square.addEventListener('click', function () {
-            this.classList.add('bg-primary');
-            scoreCounter++;
             if (bombsArray.includes(i)) {
                 this.classList.add('bg-danger');
                 gameScreen.classList.remove('d-none');
@@ -47,6 +46,11 @@ playButton.addEventListener('click', function () {
                 gameScreen.classList.add('d-flex');
                 gameScreen.classList.add('ms-win');
                 h1Screen.innerHTML = 'You Win';
+            } else {
+                this.classList.add('bg-primary');
+                scoreCounter++;
+                const scoreString = scoreCounter.toString().padStart(5, '0');
+                score.innerHTML = `${scoreString}`
             }
         });
     }
