@@ -17,8 +17,8 @@ const h1Screen = document.querySelector('#h1-screen');
 /* EVENTS */
 playButton.addEventListener('click', function () {
     const footer = document.querySelector('footer');
-    const difficulty = changeDifficulty('easy', 'medium', 'hard', 100, 81, 3);
-    const bombs = 1;
+    const difficulty = changeDifficulty('easy', 'medium', 'hard', 100, 81, 49);
+    const bombs = 16;
     const bombsArray = [];
     const maxScore = parseInt(difficulty) - bombs;
     let scoreCounter = 0;
