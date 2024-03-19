@@ -16,11 +16,17 @@ const resetButton = document.querySelector('#reset-btn');
 const h1Screen = document.querySelector('#h1-screen');
 const score = document.querySelector('#score');
 /* EVENTS */
-playButton.addEventListener('click', function () {
-    const footer = document.querySelector('footer');
-    const difficulty = changeDifficulty('easy', 'medium', 'hard', 100, 81, 49);
-    const bombs = 16;
+playButton.addEventListener('click', playBtn);
+resetButton.addEventListener("click", function () {
+    location.reload();
+});
+/* FUNCTIONS */
+// Funzione di click del bottone play
+function playBtn() {
     const bombsArray = [];
+    const footer = document.querySelector('footer');
+    const difficulty = changeDifficulty('easy', 'medium', 'hard', 3, 81, 49);
+    const bombs = 1;
     const maxScore = parseInt(difficulty) - bombs;
     let scoreCounter = 0;
     footer.classList.remove('d-none');
@@ -56,11 +62,7 @@ playButton.addEventListener('click', function () {
             }
         });
     }
-});
-resetButton.addEventListener("click", function () {
-    location.reload();
-});
-/* FUNCTIONS */
+}
 // Funzione che genera un quadrato
 // number: dato di tipo numerico
 // return: elemento nel DOM rappresentante un quadrato
