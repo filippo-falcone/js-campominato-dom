@@ -18,8 +18,8 @@ const score = document.querySelector('#score');
 /* EVENTS */
 playButton.addEventListener('click', function () {
     const footer = document.querySelector('footer');
-    const difficulty = changeDifficulty('easy', 'medium', 'hard', 100, 81, 3);
-    const bombs = 1;
+    const difficulty = changeDifficulty('easy', 'medium', 'hard', 100, 81, 49);
+    const bombs = 16;
     const bombsArray = [];
     const maxScore = parseInt(difficulty) - bombs;
     let scoreCounter = 0;
@@ -34,7 +34,7 @@ playButton.addEventListener('click', function () {
     for (let i = 1; i <= difficulty; i++) {
         const square = createSquare(i);
         mainGrid.append(square);
-        square.addEventListener('click', function () {
+        square.addEventListener('click', function squareClicked() {
             if (bombsArray.includes(i)) {
                 this.classList.add('bg-danger');
                 gameScreen.classList.remove('d-none');
@@ -46,7 +46,7 @@ playButton.addEventListener('click', function () {
                 scoreCounter++;
                 const scoreString = scoreCounter.toString().padStart(5, '0');
                 score.innerHTML = `${scoreString}`;
-                this.style.pointerEvents = 'none';
+                this.removeEventListener('click', squareClicked);
                 if (scoreCounter === maxScore) {
                     gameScreen.classList.remove('d-none');
                     gameScreen.classList.add('d-flex');
