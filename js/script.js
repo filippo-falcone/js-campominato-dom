@@ -18,8 +18,8 @@ const score = document.querySelector('#score');
 /* EVENTS */
 playButton.addEventListener('click', function () {
     const footer = document.querySelector('footer');
-    const difficulty = changeDifficulty('easy', 'medium', 'hard', 100, 81, 49);
-    const bombs = 16;
+    const difficulty = changeDifficulty('easy', 'medium', 'hard', 100, 81, 3);
+    const bombs = 1;
     const bombsArray = [];
     const maxScore = parseInt(difficulty) - bombs;
     let scoreCounter = 0;
@@ -41,16 +41,18 @@ playButton.addEventListener('click', function () {
                 gameScreen.classList.add('d-flex');
                 gameScreen.classList.add('ms-lose');
                 h1Screen.innerHTML = 'Game Over';
-            } else if (scoreCounter === maxScore) {
-                gameScreen.classList.remove('d-none');
-                gameScreen.classList.add('d-flex');
-                gameScreen.classList.add('ms-win');
-                h1Screen.innerHTML = 'You Win';
             } else {
                 this.classList.add('bg-primary');
                 scoreCounter++;
                 const scoreString = scoreCounter.toString().padStart(5, '0');
-                score.innerHTML = `${scoreString}`
+                score.innerHTML = `${scoreString}`;
+                this.style.pointerEvents = 'none';
+                if (scoreCounter === maxScore) {
+                    gameScreen.classList.remove('d-none');
+                    gameScreen.classList.add('d-flex');
+                    gameScreen.classList.add('ms-win');
+                    h1Screen.innerHTML = 'You Win';
+                }
             }
         });
     }
